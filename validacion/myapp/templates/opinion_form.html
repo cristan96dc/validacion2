@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opinión</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles3.css' %}">
+    <style>
+        .error-message {
+            color: red;
+            font-weight: bold;
+        }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            display: none;
+        }
+        .popup.active {
+            display: block;
+        }
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px; /* Ajusta el tamaño de la fuente aquí */
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Deja tu opinión</h1>
+    <form method="post" onsubmit="return validateForm()">
+        {% csrf_token %}
+        <label for="nombre">Ingrese su nombre:</label><br>
+        <input type="text" id="nombre" name="nombre"><br><br>
+        <label for="opinion">Deje su comentario:</label><br>
+        <textarea id="opinion" name="opinion" rows="4" cols="50"></textarea><br><br>
+        <button type="submit" class="boton">Enviar</button> <!-- Agrega la clase "boton" aquí -->
+    </form>
+
+    <div id="popup" class="popup">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <p class="error-message" id="error-message"></p>
+    </div>
+
+    <script>
+        function validateForm() {
+            var nombre = document.getElementById("nombre").value;
+            var opinion = document.getElementById("opinion").value;
+
+            if (nombre.trim() === "" || opinion.trim() === "") {
+                document.getElementById("error-message").innerText = "Por favor, asegúrate de completar ambos campos.";
+                document.getElementById("popup").classList.add("active");
+                return false; // Evita el envío del formulario si los campos están vacíos
+            }
+
+            return true;
+        }
+
+        function closePopup() {
+            document.getElementById("popup").classList.remove("active");
+        }
+    </script>
+</body>
+</html>

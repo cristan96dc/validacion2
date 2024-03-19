@@ -1,0 +1,164 @@
+/* Estilos generales para las imágenes */
+body {
+    background-color: #7AC74F;
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+}
+
+
+
+img {
+    display: block; /* Para que cada imagen se muestre en su propio bloque */
+    margin: 0 auto 10px; /* Centrar la imagen y agregar espacio inferior */
+    width: 100px; /* Ancho fijo para todas las imágenes */
+    height: 100px; /* Altura fija para todas las imágenes */
+}
+
+/* Estilos para el formulario */
+form {
+    background-color: #7AC74F; /* Color de fondo verde */
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    text-align: center;
+    max-width: 600px; /* Ancho máximo del formulario */
+    width: 90%; /* Ancho del formulario */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+
+input[type="number"] {
+    width: 50px;
+}
+
+/* Estilos para las frutas */
+.fruta {
+    background-color: #FFFFFF; /* Color de fondo blanco */
+    padding: 10px; /* Espacio interno */
+    border-radius: 10px; /* Bordes redondeados */
+    text-align: center; /* Alineación central */
+    margin-right: 10px; /* Espacio derecho entre las frutas */
+    margin-bottom: 10px; /* Espacio inferior entre las frutas */
+    display: inline-block; /* Mostrar las frutas en línea */
+    width: 120px; /* Ancho fijo para las frutas */
+}
+
+/* Estilos específicos para las imágenes de las frutas */
+.fruta img {
+    display: block; /* Para que cada imagen se muestre en su propio bloque */
+    margin: 0 auto 5px; /* Centrar la imagen y agregar espacio inferior */
+    width: 80px; /* Ancho de la imagen */
+    height: 80px; /* Altura de la imagen */
+}
+
+/* Estilos para el nombre de la fruta */
+.fruta label {
+    display: block; /* Mostrar el nombre en un bloque separado */
+    font-weight: bold; /* Fuente en negrita */
+}
+
+/* Estilos para el selector de cantidad dentro de las frutas */
+.fruta input[type="number"] {
+    width: 30px; /* Ancho del selector de cantidad */
+}
+
+.frutas-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.fruta {
+    text-align: center;
+}
+.cantidad-input {
+    display: none;
+
+}
+.fruta-nombre {
+    display: block;
+    text-align: left;
+    margin-top: 5px;
+    width: 100%; /* Asegura que el nombre ocupe todo el ancho disponible */
+    margin-left: auto; /* Centra horizontalmente el elemento */
+    margin-right: auto; /* Centra horizontalmente el elemento */
+}
+
+/* Agrega estos estilos para ocultar inicialmente los campos de entrada de cantidad */
+.cantidad-input {
+    display: none;
+}
+
+/* Agrega estos estilos para mostrar los campos de entrada de cantidad cuando se hace clic en la imagen */
+.fruta-img:focus + .fruta-nombre,
+.fruta-img:focus + .fruta-nombre + .cantidad-input {
+    display: block;
+}
+
+.realizar-btn {
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: #FFFFFF; /* Color del texto blanco */
+    padding: 10px 20px; /* Espacio interno del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar el ratón */
+    font-size: 16px; /* Tamaño del texto */
+}
+
+.realizar-btn:hover {
+    background-color: #45a049; /* Cambiar el color de fondo cuando se pasa el ratón sobre el botón */
+}
+.fila {
+    display: flex; /* Usar flexbox */
+    flex-direction: row-reverse; /* Establecer la dirección de los elementos a filas en sentido inverso (de derecha a izquierda) */
+    justify-content: center; /* Centrar los elementos horizontalmente */
+}
+
+.navbar {
+    background-color: #9df0a8;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 25px; /* Reducción de la altura de la barra de navegación */
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.navbar li {
+    margin-right: 10px;
+}
+
+.navbar li:last-child {
+    margin-right: 0;
+}
+
+.navbar a {
+    color: #080808;
+    text-decoration: none;
+    padding: 15px;
+    font-size: 14px; /* Aumento del tamaño de la fuente */
+}
+
+.navbar a:hover {
+    background-color: #346606;
+}

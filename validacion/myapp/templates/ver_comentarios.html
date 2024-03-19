@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Comentarios</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles3.css' %}">
+
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'saludito' %}">🏠Home</a></li>
+            <li><a href="{% url 'realizar_compra' %}">Realizar Compra</a></li>
+            <li><a href="{% url 'mostrar_historia' %}">Historia</a></li>
+            <li><a href="{% url 'detalles_galletas' %}">Detalles Galletas</a></li>
+        </ul>
+    </nav>
+    <h1>Comentarios de los Usuarios</h1>
+    <a href="{% url 'opinion_form' %}"><button type="submit" class="boton">Dejar opinión</button></a>
+
+    <div class="comentarios-container">
+        <ul>
+            {% for comentario in comentarios %}
+            <li>
+                <div class="comentario-info" style="text-align: center;">
+                    <span class="nombre">{{ comentario.nombre }}</span>
+                    <span class="descripcion">{{ comentario.opinion }}</span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body> 
+</html>

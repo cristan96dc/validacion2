@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Compra de Frutas</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles2.css' %}">
+    <style>
+        /* Estilos para escalar las flechas del campo de entrada tipo "number" */
+        input[type="number"]::-webkit-inner-spin-button, 
+        input[type="number"]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        .fruta-precio-total {
+            display: none;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        /* Estilos para el costo acumulado */
+        #costo-acumulado {
+            position: fixed;
+            bottom: 10px; /* Puedes ajustar esto según tu diseño */
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 50px; /* Agrega un margen superior para dar espacio al h1 */
+        }
+       
+    </style>
+
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'saludito' %}">🏠Home</a></li>
+            <li><a href="{% url 'mostrar_historia' %}">Historia</a></li>
+            <li><a href="{% url 'ver_comentarios' %}">Comentarios</a></li>
+            <li><a href="{% url 'detalles_galletas' %}">Detalles Galletas</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido del formulario aquí -->
+    <form id="frutas-form" method="post" action="{% url 'realizar_compra' %}">
+        {% csrf_token %}
+        <!-- Agregar un campo oculto para almacenar los datos de la compra -->
+        <input type="hidden" id="datos-compra" name="datos_compra" value="">
+        <div class="frutas-container">
+            <div class="fila">
+                {% for fruta in frutas %}
+                    {% if forloop.counter0|divisibleby:4 and not forloop.first %}
+                        </div><div class="fila">
+                    {% endif %}
+                    <div class="fruta">
+                        <img src="{% static 'img/' %}{{ fruta.nombre|lower }}.png" alt="{{ fruta.nombre }}"> 
+                        <label class="fruta-nombre">{{ fruta.nombre }}</label>
+                        <span class="fruta-precio" data-fruta-id="{{ fruta.id }}" style="display: block;">Precio: {{ fruta.precio }}</span> <!-- Agregado -->
+                        <input type="number" name="cantidad_{{ fruta.id }}" id="id_cantidad_{{ fruta.id }}" min="0" class="cantidad-input" style="display: inline; width: 30px;">
+                        <span class="fruta-precio-total" id="precio-total-{{ fruta.id }}"></span> <!-- Agregado -->
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <input type="submit" value="Realizar Compra" class="realizar-btn">
+    </form>
+    <!-- Elemento para mostrar el costo acumulado -->
+    <div id="costo-acumulado">Costo acumulado: $0.00</div>
+    
+    <!-- Si necesitas scripts adicionales, puedes incluirlos aquí -->
+    <script src="{% static 'js/script.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const frutaInputs = document.querySelectorAll('.cantidad-input');
+
+            // Función para calcular el costo acumulado
+            function calcularCostoAcumulado() {
+                let costoAcumulado = 0;
+                frutaInputs.forEach(function(frutaInput) {
+                    const frutaId = frutaInput.id.split('_').pop(); // Obtener el ID de la fruta
+                    const cantidad = parseInt(frutaInput.value) || 0; // Obtener la cantidad ingresada por el usuario
+                    const precioUnitario = parseFloat(document.querySelector(`.fruta-precio[data-fruta-id="${frutaId}"]`).innerText.split(':').pop().trim()) || 0; // Obtener el precio unitario de la fruta
+                    costoAcumulado += cantidad * precioUnitario; // Calcular el precio total de esta fruta y agregarlo al costo acumulado
+                });
+                return costoAcumulado;
+            }
+
+            // Función para actualizar el costo acumulado
+            function actualizarCostoAcumulado() {
+                const costoAcumulado = calcularCostoAcumulado();
+                const costoAcumuladoElement = document.getElementById('costo-acumulado');
+                costoAcumuladoElement.innerText = `Costo acumulado: $${costoAcumulado.toFixed(2)}`; // Actualizamos el contenido del elemento con el costo acumulado
+            }
+
+            // Agregar eventos a los inputs de cantidad para actualizar el costo acumulado cuando cambien
+            frutaInputs.forEach(function(frutaInput) {
+                frutaInput.addEventListener('input', actualizarCostoAcumulado);
+            });
+        });
+    </script>
+</body>
+</html>

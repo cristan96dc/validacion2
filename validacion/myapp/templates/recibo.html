@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recibo de Compra</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"> <!-- Enlazamos nuestro archivo CSS -->
+</head>
+<body>
+    
+    <div class="container recibo">
+        <h1>Recibo de Compra</h1>
+        <div class="compra-container">
+            <h2>Detalles de la compra:</h2>
+            <ul>
+                {% for compra in compras %}
+                    <li>{{ compra.fruta }} ${{ compra.precio }} - X {{ compra.cantidad }} - ${{ compra.total_price }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="compra-container">
+            <h3>Total de la compra: ${{ total_cost }}</h3>
+        </div>
+        <div class="compra-container" id="galletas-container">
+            <h3>Galletas adicionales:</h3>
+            <p id="galletas-text"></p>
+        </div>
+    </div>
+
+    <script>
+        // Lógica para determinar la cantidad de galletas adicionales
+        var totalCost = {{ total_cost }};
+        var galletasContainer = document.getElementById("galletas-container");
+        var galletasText = document.getElementById("galletas-text");
+
+        if (totalCost >= 5) {
+            galletasText.textContent = "¡Tienes una galleta garits!";
+        }
+        if (totalCost >= 10) {
+            galletasText.textContent = "¡Tienes dos galletas garits!";
+        }
+        if (totalCost >= 15) {
+            galletasText.textContent = "¡Tienes tres galletas garits!";
+        }
+        if (totalCost >= 20) {
+            galletasText.textContent = "¡Tienes cuatro galletas garits!";
+        }
+        if (totalCost >= 25) {
+            galletasText.textContent = "¡Tienes cinco galletas garits!";
+        }
+        if (totalCost >= 30) {
+            galletasText.textContent = "¡Tienes seis galletas garits!";
+        }
+    </script>
+</body>
+</html>

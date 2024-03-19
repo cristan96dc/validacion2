@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra página</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles3.css' %}">
+</head>
+<body>
+    <!-- Barra de Navegación -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'saludito' %}">🏠Home</a></li>
+            <li><a href="{% url 'realizar_compra' %}">Realizar Compra</a></li>
+            <li><a href="{% url 'mostrar_historia' %}">Historia</a></li>
+            <li><a href="{% url 'ver_comentarios' %}">Comentarios</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sección de Título -->
+    <h1>Nuestras galletitas</h1>
+
+    <!-- Sección de Galletas -->
+    <div class="galletas-container">
+        {% for galleta in galletas %}
+            <div class="galleta" onclick="mostrarDetalles('{{ galleta.id }}')">
+                <p><strong></strong> {{ galleta.nombre }}</p>
+                <p><strong></strong> {{ galleta.descripcion }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Comentarios -->
+    <div class="comentarios-container">
+        <ul>
+            {% for comentario in comentarios %}
+                <li>
+                    <div class="comentario-info">
+                        <span class="nombre">{{ comentario.nombre }}</span>
+                        <span class="descripcion">{{ comentario.opinion }}</span>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Sección de Galleta Gratis -->
+    <div class="square-container">
+        <h2 class="special-animation">Recuerda que por la compra de tus productos obtienes una galleta gratis</h2>
+    </div>
+</body>
+</html>

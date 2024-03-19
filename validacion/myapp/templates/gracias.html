@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gracias por tu opinión</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles3.css' %}">
+
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'saludito' %}">🏠Home</a></li>
+            <li><a href="{% url 'realizar_compra' %}">Realizar Compra</a></li>
+            <li><a href="{% url 'mostrar_historia' %}">Historia</a></li>
+            <li><a href="{% url 'ver_comentarios' %}">Comentarios</a></li>
+            <li><a href="{% url 'detalles_galletas' %}">Detalles Galletas</a></li>
+        </ul>
+    </nav>
+    <h1>¡Gracias por tu opinión!</h1>
+    <p>Tu opinión ha sido enviada correctamente.</p>
+</body>
+</html>

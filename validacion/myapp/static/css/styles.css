@@ -1,0 +1,250 @@
+body {
+    background-color: #7AC74F; /* Verde Fruta */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    position: fixed; /* Establece la posición fija */
+    top: 0; /* Lo coloca en la parte superior de la ventana */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Centra horizontalmente */
+    z-index: 9999; /* Asegura que esté por encima de otros elementos */
+    padding: 10px; /* Añade espacio alrededor del texto si es necesario */
+    width: 100%; /* Ocupa todo el ancho de la ventana */
+    text-align: center; /* Centra el texto */
+    color: #000000;
+    animation: fade-in-text 5s linear;
+    animation-fill-mode: forwards;
+}
+
+h2 {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+div {
+    margin: 20px;
+}
+.recibo {
+    display: flex; /* Cambia a un diseño flexible */
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    border: 2px solid #00f; /* Agrega un borde sólido azul alrededor de la sección recibo */
+    padding: 10px; /* Añade un espacio interno */
+    border-radius: 5px; /* Redondea los bordes */
+}
+     
+       /* Estilos para los botones */
+       .boton {
+        display: inline-block;
+        background-color: #4CAF50; /* Color de fondo verde */
+        color: white; /* Color del texto blanco */
+        padding: 10px 20px; /* Padding del botón */
+        border: none; /* Sin borde */
+        border-radius: 5px; /* Bordes redondeados */
+        text-align: center; /* Alineación del texto */
+        text-decoration: none; /* Sin subrayado */
+        font-size: 16px; /* Tamaño de la fuente */
+        margin-right: 10px; /* Margen derecho entre botones */
+        margin-bottom: 10px; /* Margen inferior entre botones */
+        cursor: pointer; /* Cursor de puntero */
+        transition: background-color 0.3s; /* Transición suave del color de fondo */
+    }
+    
+    /* Cambio de color al pasar el ratón sobre el botón */
+    .boton:hover {
+        background-color: #45a049; /* Cambia el color de fondo al pasar el ratón */
+    }
+    
+    /* Estilos para los botones en la sección de opciones */
+    #opciones .boton {
+        display: block; /* Cambia la visualización a bloque para que estén uno encima del otro */
+        margin-bottom: 10px; /* Agrega un margen inferior para separar los botones */
+    }
+    
+    
+    /* Cambio de color al pasar el ratón sobre el botón */
+.boton:hover::before {
+    background-color: white; /* Cambia el color de la raya al pasar el ratón */
+    }
+
+    .title {
+        text-align: center;
+        color: #FFFFFF; /* Blanco */
+    }
+    
+    .container {
+        background-color: #FFFFFF; /* Blanco */
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        border: 1px dotted #000; /* Añade un borde punteado alrededor del contenedor */
+        margin: 20px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-label {
+        color: #333; /* Color del texto */
+    }
+    
+    .form-input {
+        width: 100%; /* Ancho completo */
+        padding: 10px; /* Padding */
+        border-radius: 5px; /* Bordes redondeados */
+        border: 1px solid #ccc; /* Borde */
+    }
+    
+    #submit-btn {
+        background-color: #4CAF50; /* Color de fondo verde */
+        color: #000000; /* Color del texto negro */
+        padding: 10px 20px; /* Padding del botón */
+        border: none; /* Sin borde */
+        border-radius: 5px; /* Bordes redondeados */
+        font-size: 16px; /* Tamaño de la fuente */
+        cursor: pointer; /* Cursor de puntero */
+        transition: background-color 0.3s; /* Transición suave del color de fondo */
+    }
+    
+    #submit-btn:hover {
+        background-color: #45a049; /* Cambia el color de fondo al pasar el ratón */
+    }
+    
+    .custom-btn {
+        background-color: #4CAF50; /* Color de fondo verde */
+        color: #000000; /* Color del texto negro */
+        padding: 10px 20px; /* Padding del botón */
+        border: none; /* Sin borde */
+        border-radius: 5px; /* Bordes redondeados */
+        font-size: 16px; /* Tamaño de la fuente */
+        cursor: pointer; /* Cursor de puntero */
+        transition: background-color 0.3s; /* Transición suave del color de fondo */
+        margin-right: 10px; /* Margen derecho entre botones */
+    }
+    
+    .custom-btn:hover {
+        background-color: #45a049; /* Cambia el color de fondo al pasar el ratón */
+    }
+            /* Estilos para el mensaje de bienvenida */
+            #nombre-usuario {
+                color: #4CAF50; /* Color verde */
+                font-size: 24px; /* Tamaño de fuente más grande */
+                font-weight: bold; /* Texto en negrita */
+                margin-bottom: 20px; /* Espacio inferior */
+            }
+
+            .fruta-nombre {
+                display: block;
+                text-align: left;
+                margin-top: 5px;
+                width: 100%; /* Asegura que el nombre ocupe todo el ancho disponible */
+                margin-left: auto; /* Centra horizontalmente el elemento */
+                margin-right: auto; /* Centra horizontalmente el elemento */
+            }
+            
+            /* Agrega estos estilos para ocultar inicialmente los campos de entrada de cantidad */
+            .cantidad-input {
+                display: none;
+            }
+            
+            /* Agrega estos estilos para mostrar los campos de entrada de cantidad cuando se hace clic en la imagen */
+            .fruta-img:focus + .fruta-nombre,
+            .fruta-img:focus + .fruta-nombre + .cantidad-input {
+                display: block;
+            }
+            
+            /* Estilos para el pop-up */
+            .popup {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0,0,0,0.4);
+            }
+            
+            .popup-content {
+                background-color: #fefefe;
+                margin: 15% auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+                text-align: center;
+            }
+            
+            .close {
+                color: #aaaaaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+            
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+            }
+            .navbar {
+                background-color: #333; /* Cambia el color de fondo de la barra de navegación */
+                position: fixed; /* Fija la barra de navegación en la parte superior */
+                top: 0; /* Asegura que la barra de navegación esté pegada arriba */
+                width: 100%; /* Asegura que la barra de navegación ocupe todo el ancho de la página */
+                z-index: 1000; /* Asegura que la barra de navegación esté por encima de otros elementos */
+            }
+            
+            .navbar ul {
+                list-style-type: none; /* Quita los puntos de la lista */
+                margin: 0;
+                padding: 0;
+                display: flex; /* Cambia la visualización de la lista a flexbox */
+                justify-content: flex-end; /* Alinea los elementos de la barra de navegación a la derecha */
+            }
+            
+            .navbar li {
+                margin-left: 10px; /* Margen izquierdo entre elementos */
+            }
+            
+            .navbar li:first-child {
+                margin-left: 0; /* Elimina el margen izquierdo del primer elemento */
+            }
+            
+            .navbar a {
+                color: #fff; /* Cambia el color del texto de los enlaces */
+                text-decoration: none; /* Quita el subrayado de los enlaces */
+                padding: 10px; /* Añade espacio alrededor del texto de los enlaces */
+            }
+            
+            .navbar a:hover {
+                background-color: #555; /* Cambia el color de fondo al pasar el ratón sobre los enlaces */
+            }
+           #opciones {
+    display: none;
+    text-align: center;
+}
+#opciones a {
+    text-decoration: none; /* Quita el subrayado de los enlaces dentro de #opciones */
+}
+
+#opciones button {
+    margin: 10px auto; /* Auto-margen horizontal y 10px de margen inferior */
+    display: block;
+}

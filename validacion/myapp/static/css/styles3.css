@@ -1,0 +1,170 @@
+body {
+    background-color: #7AC74F;
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
+h1 {
+    color: #fffdfd;
+    animation: fade-in-text 5s linear; /* Controla la duración de la animación */
+    animation-fill-mode: forwards; /* Hace que el último fotograma de la animación se mantenga visible */
+}
+  
+.galletas-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.galleta {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    max-width: 300px;
+    cursor: pointer; /* Cambiamos el cursor al pasar sobre una galleta */
+}
+.galleta h2 {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    max-width: 300px;
+    cursor: pointer;
+}
+.galleta p {
+    margin: 10px 0;
+}
+
+.galleta p strong {
+    font-weight: bold;
+}
+
+.square-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Centra horizontalmente */
+    padding: 20px;
+    max-width: 300px;
+    text-align: center; /* Centra el texto horizontalmente */
+}
+.special-animation {
+    transition: transform 0.5s ease; /* Agrega una transición suave para la animación */
+}
+
+.special-animation:hover {
+    transform: rotate(20deg); /* Rota el cuadrado cuando se pasa el cursor sobre él */
+}
+.navbar {
+    background-color: #9df0a8;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 25px; /* Reducción de la altura de la barra de navegación */
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.navbar li {
+    margin-right: 10px;
+}
+
+.navbar li:last-child {
+    margin-right: 0;
+}
+
+.navbar a {
+    color: #080808;
+    text-decoration: none;
+    padding: 15px;
+    font-size: 14px; /* Aumento del tamaño de la fuente */
+}
+
+.navbar a:hover {
+    background-color: #346606;
+}
+
+/* Añade margen superior al contenido */
+.content-wrapper {
+    margin-top: 45px; /* Igualar a la altura de la barra de navegación */
+}
+.container {
+    background-color: #FFFFFF; /* Blanco */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px dotted #fc0303; /* Añade un borde punteado alrededor del contenedor */
+    margin: 20px;
+    max-width: 800px; /* Define un ancho máximo para el contenedor */
+    margin: 20px auto; /* Centra el contenedor horizontalmente */
+}
+
+.galletas-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.comentarios-container li {
+    margin-bottom: 20px; /* Espacio entre cada comentario */
+    list-style-type: none; /* Elimina los puntos de la lista */
+}
+.boton {
+    display: inline-block;
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: white; /* Color del texto blanco */
+    padding: 10px 20px; /* Padding del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none; /* Sin subrayado */
+    font-size: 16px; /* Tamaño de la fuente */
+    margin-right: 10px; /* Margen derecho entre botones */
+    margin-bottom: 10px; /* Margen inferior entre botones */
+    cursor: pointer; /* Cursor de puntero */
+    transition: background-color 0.3s; /* Transición suave del color de fondo */
+}
+
+/* Cambio de color al pasar el ratón sobre el botón */
+.boton:hover {
+    background-color: #45a049; /* Cambia el color de fondo al pasar el ratón */
+}
+
+/* Estilos para los botones en la sección de opciones */
+#opciones .boton {
+    display: block; /* Cambia la visualización a bloque para que estén uno encima del otro */
+    margin-bottom: 10px; /* Agrega un margen inferior para separar los botones */
+}
+
+
+
+
+
+.comentario-info {
+    margin: 5px auto; /* Margen pequeño alrededor de cada comentario y centrado horizontalmente */
+    padding: 10px; /* Espacio interno dentro de cada comentario */
+    background-color: #f9f9f9; /* Color de fondo para resaltar los comentarios */
+    border-radius: 5px; /* Añade bordes redondeados a los comentarios */
+    max-width: 400px; /* Ancho máximo para los comentarios */
+}
+
+.nombre {
+    display: block; /* Para que el nombre esté en una línea separada */
+    margin-bottom: 5px; /* Espacio entre el nombre y la opinión */
+}
+
+.descripcion {
+    flex-grow: 1; /* Permite que el elemento ocupe todo el espacio disponible */
+}
+.error-message {
+    color: red;
+    font-weight: bold;
+}

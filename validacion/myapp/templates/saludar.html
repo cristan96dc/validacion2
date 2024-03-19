@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frutitas - Saludo</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1 style="text-align: center; color: #FFFFFF;">¡Bienvenido a </h1> <!-- Título añadido -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const welcomeText = "Frutitas!";
+            const welcomeElement = document.querySelector("h1");
+            let i = 0;
+
+            function typeWriter() {
+                if (i < welcomeText.length) {
+                    welcomeElement.innerHTML += welcomeText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+
+            typeWriter();
+        });
+    </script>
+
+    
+    
+    <div class="container">
+        <form id="saludo-form" method="post" action="{% url 'saludito' %}">
+            {% csrf_token %}
+            <label for="edad" id="edad-label">Edad:</label><br>
+            <input type="number" name="edad" id="edad-input" required><br><br>
+    
+            <button type="submit" id="submit-btn">Enviar</button>
+        </form>
+        
+        <div id="opciones" style="display: none; text-align: center;">
+            
+           
+            <a href="{% url 'realizar_compra' %}">
+                <button class="boton" style="display: block; margin-bottom: 10px;">Realizar Compra</button>
+            </a>
+            
+            <a href="{% url 'mostrar_historia' %}">
+                <button class="boton" style="display: block; margin-bottom: 10px;">Ver Historia</button>
+            </a>
+
+            <a href="{% url 'detalles_galletas' %}">
+                <button class="boton" style="display: block; margin-bottom: 10px;">galletas</button>
+            </a>
+            <a href="{% url 'ver_comentarios' %}">
+                <button class="boton" style="display: block; margin-bottom: 10px;">comentario</button>
+            </a>
+        </div>
+    </div>
+    
+    <script src="{% static 'js/script.js' %}"></script> <!-- Enlaza tu archivo JavaScript -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const saludoForm = document.getElementById('saludo-form');
+        const edadLabel = document.getElementById('edad-label');
+        const edadInput = document.getElementById('edad-input');
+        const submitBtn = document.getElementById('submit-btn');
+        const opcionesDiv = document.getElementById('opciones');
+        const nombreUsuario = document.getElementById('nombre-usuario');
+    
+        saludoForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar el envío del formulario
+    
+            // Obtener el valor de la edad del formulario
+            const edad = parseInt(edadInput.value);
+    
+            // Mostrar las opciones si la edad es válida
+            if (!isNaN(edad) && edad >= 0) {
+                // Mostrar las opciones si la edad es mayor o igual a 18
+                if (edad >= 18) {
+                    opcionesDiv.style.display = 'block';
+                } else {
+                    // Si es menor de 18, mostrar el pop-up
+                    window.alert('Lo siento, debes tener al menos 18 años para acceder a esta página.');
+                }
+    
+                // Ocultar el campo de edad y el botón de enviar
+                edadLabel.style.display = 'none';
+                edadInput.style.display = 'none';
+                submitBtn.style.display = 'none';
+            } else {
+                // Si la edad no es válida, mostrar un mensaje de error
+                window.alert('Por favor ingresa una edad válida.');
+            }
+        });
+    });
+</script>
+</body>
+</html>

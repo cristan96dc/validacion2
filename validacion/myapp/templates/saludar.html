@@ -74,6 +74,11 @@
             // Obtener el valor de la edad del formulario
             const edad = parseInt(edadInput.value);
     
+            // Ocultar el campo de edad y el botón de enviar
+            edadLabel.style.display = 'none';
+            edadInput.style.display = 'none';
+            submitBtn.style.display = 'none';
+
             // Mostrar las opciones si la edad es válida
             if (!isNaN(edad) && edad >= 0) {
                 // Mostrar las opciones si la edad es mayor o igual a 18
@@ -83,11 +88,6 @@
                     // Si es menor de 18, mostrar el pop-up
                     window.alert('Lo siento, debes tener al menos 18 años para acceder a esta página.');
                 }
-    
-                // Ocultar el campo de edad y el botón de enviar
-                edadLabel.style.display = 'none';
-                edadInput.style.display = 'none';
-                submitBtn.style.display = 'none';
             } else {
                 // Si la edad no es válida, mostrar un mensaje de error
                 window.alert('Por favor ingresa una edad válida.');
